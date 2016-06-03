@@ -1,15 +1,15 @@
 class Rover
-	#attr_accessor :rover_name, :x, :y, :direction, :move, :turn
+	#attr_accessor :rover_name, :x, :y, :direction, :instructions
 
 
-	def initialize
-		@x = @position[0].to_i
-		@y = @position[1].to_i
-		@direction = @position[2].upcase.to_sym
+	def initialize(x, y, direction)
+		@x = x.to_i
+		@y = y.to_i
+		@direction = direction.to_sym
 	end
 
-	def read_instruction
-		@instructions.each do |command|
+	def read_instruction(instruction)
+		instruction.each do |command|
 			case @command
 				when "m" then move
 				when "l" then turn_left
@@ -47,5 +47,9 @@ class Rover
 			when :W then @x -= 1
 		end #End of move case
 	end #End of move method
+
+	def output
+		puts "Final Position Rover1: #{@x}, #{@y}, #{@direction}"
+	end
 
 end #End of Rover class
